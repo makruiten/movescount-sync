@@ -77,12 +77,13 @@ def configure(force=False):
             print(f"Storing configuration in {CONFIG_FILE}")
             f.write(json.dumps({
                 'email': email,
-                'password': password,
                 'formats': formats,
                 'data_dir': data_dir,
             }, sort_keys=True, indent=4))
     with open(CONFIG_FILE, 'r') as f:
-        return json.loads(f.read())
+        config = json.loads(f.read())
+        config['password'] = getpass.getpass()
+        return config
 
 
 def login(session, email, password):
