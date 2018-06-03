@@ -59,7 +59,6 @@ def configure(force=False):
     os.makedirs(CFG, exist_ok=True)
     if not os.path.exists(CONFIG_FILE) or force:
         email = input('Movescount.com email address: ')
-        password = getpass.getpass()
         formats = []
         while not formats:
             save_formats = input("Formats to fetch, space-separated "
